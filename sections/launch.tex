@@ -1,12 +1,13 @@
 % Section 3 - Launch files
 % Roberto Masocco <roberto.masocco@uniroma2.it>
-% June 11, 2025
+% May 20, 2026
 
 % ### Launch files ###
 \section{Launch files}
 
 % --- Scripting ROS 2 architectures ---
 \begin{frame}{Scripting ROS 2 architectures}
+  \justifying
 	A ROS 2-based control architecture for a robot can easily get to have 20 nodes or more.\\
 	\bigskip
 	It then becomes critical to be able to \textbg{automate startup and configuration} of all the modules, or some subsets, also for testing.\\
@@ -16,7 +17,9 @@
 
 % --- Launch files ---
 \begin{frame}{Launch files}
-	\textbg{Launch files} are \textbg{Python scripts} that specify how ROS 2 modules must be \textbg{located}, \textbg{configured} and \textbg{started}. Their format is such that the Launch System can parse and integrate them when invoked.\\\vspace{10pt}
+  \justifying
+	\textbg{Launch files} are \textbg{Python scripts} that specify how ROS 2 modules must be \textbg{located}, \textbg{configured} and \textbg{started}. Their format is such that the Launch System can parse and integrate them when invoked.\\
+  \bigskip
 	Many things can be configured about ROS 2 modules in such files:
 	\begin{itemize}
 		\item console and text files \textbg{logs};
@@ -24,8 +27,9 @@
 		\item node \textbg{parameters};
 		\item \textbg{remappings} of namespaces, node names, topics, services and actions.
 	\end{itemize}
-	\vspace{10pt}
-	It is also possible to start \textbg{custom executables}, define \textbg{environment variables}, and more.\\\vspace{10pt}
+	\bigskip
+	It is also possible to start \textbg{custom executables}, define \textbg{environment variables}, and more.\\
+  \bigskip
 	Launch files may be \textbg{included}, so that \textbg{large architectures} can be started with \textbg{one command}.
 \end{frame}
 \begin{frame}[fragile]{Launch files}
@@ -50,11 +54,12 @@ def generate_launch_description():
 
 % --- Launch System CLI commands ---
 \begin{frame}{Launch System CLI commands}
+  \justifying
   The main command to \textbg{execute the \texttt{LaunchDescription}} specified in a launch file is\\
   \bigskip
   \texttt{ros2 launch PACKAGE\_NAME LAUNCH\_FILE}\\
   \bigskip
-  This will start a \textbg{Python interpreter} in your current shell, that will \textbg{parse} the launch file and \textbg{execute} the \texttt{LaunchDescription}. You will \textbg{interface with the underlying processes} through this interpreter instance. You can also specify \textbg{launch arguments} that you will be able to access from within the launch file:\\
+  This will start a \textbg{Python interpreter} in your current shell, that will \textbg{parse} the launch file and \textbg{execute} the \texttt{LaunchDescription} built inside it. You will \textbg{interface with the underlying processes} through this interpreter instance. You can also specify \textbg{launch arguments} that you will be able to access from within the launch file:\\
   \bigskip
   \texttt{ros2 launch PACKAGE\_NAME LAUNCH\_FILE ARG1:=VALUE1 ARG2:=VALUE2 ...}\\
   \bigskip
@@ -63,11 +68,13 @@ def generate_launch_description():
 
 % --- Coding launch files ---
 \begin{frame}{Coding launch files}{Tips and best practices}
+  \justifying
 	\begin{itemize}
 		\item Their \textbg{extension} is usually \texttt{.launch.py}.
 		\item They are usually placed in a package subdirectory named \texttt{launch/} that is \textbg{installed} in the workspace path during build, via appropriate directives in either \texttt{CMakeLists.txt} or \texttt{setup.py} files.
 		\item A module can have its own launch files but those for the entire \textbg{architecture} must form an appropriate \textbg{package}, whose name is usually \texttt{PROJECT\_bringup}.
 	\end{itemize}
+  \bigskip
 	\begin{block}{}
 		\centering
 		Find a comprehensive description of all the features of launch files in \href{https://github.com/IntelligentSystemsLabUTV/ros2-examples/blob/jazzy/launch_files.md}{\color{blue}\underline{\texttt{launch\_files.md}}}.
